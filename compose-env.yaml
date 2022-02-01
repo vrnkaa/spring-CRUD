@@ -1,18 +1,11 @@
-# Use root/example as user/password credentials
-version: '3.1'
-
+version: '3'
 services:
-
-  db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: CRUD-DB
-
-  adminer:
-    image: adminer
+  db-cats-api:
+    image: postgres:12
     restart: always
     ports:
-      - "8080:8080"
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: db
